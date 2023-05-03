@@ -14,7 +14,7 @@ export const METADATA_ALIGN = [
 ];
 
 const toCapitalCase = str => str
-    .replaceAll(/(-|_|\/)/g, SPACE)
+    .replace(/(-|_|\/)/g, SPACE)
     .split(SPACE)
     .map(word => word.charAt(0).toUpperCase() + word.split(EMPTY_STRING).slice(1).join(EMPTY_STRING))
     .join(SPACE);
