@@ -1,0 +1,44 @@
+{
+    "name": "@soundslikeodd/package-banner",
+    "version": "1.0.0",
+    "description": "NPM package banner generator.",
+    "main": "index.js",
+    "scripts": {
+        "pretest": "eslint --ext .js,.mjs .",
+        "test": "c8 mocha",
+        "prepare": "husky install"
+    },
+    "type": "module",
+    "exports": "./index.mjs",
+    "files": [
+        "./index.mjs",
+        "./bin/*"
+    ],
+    "bin": {
+        "package-banner": "./bin/package-banner.mjs"
+    },
+    "engines": {
+        "node": ">=14.16"
+    },
+    "author": {
+        "name": "soundslikeodd"
+    },
+    "license": "ISC",
+    "dependencies": {
+        "ansi-align": "^3.0.1",
+        "boxen": "^7.0.2",
+        "figlet": "^1.6.0",
+        "yargs": "^17.7.1"
+    },
+    "devDependencies": {
+        "c8": "^7.13.0",
+        "chai": "^4.3.7",
+        "eslint": "^8.39.0",
+        "husky": "^8.0.3",
+        "lint-staged": "^13.2.2",
+        "mocha": "^10.2.0"
+    },
+    "lint-staged": {
+        "*.{js,mjs,cjs}": "eslint --ext .js,.mjs,.cjs ."
+    }
+}

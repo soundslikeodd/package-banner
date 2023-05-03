@@ -1,0 +1,13 @@
+╓───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╖
+║                                                                                                                                                                   ║
+║                                                                                                                                                  @soundslikeodd   ║
+║     dBBBBBBP dBBBP.dBBBBP dBBBBBBP        dBBBBBb dBBBBBb     dBBBP  dBP dBP dBBBBBb     dBBBBb  dBBBP         dBBBBb dBBBBBb     dBBBBb  dBBBBb  dBBBP dBBBBBb   ║
+║                   BP                          dB'      BB           d8P.dBP       BB                              dBP      BB        dBP     dBP            dBP   ║
+║      dBP   dBBP   `BBBBb   dBP            dBBBP'   dBP BB   dBP    dBBBBP     dBP BB   dBBBB   dBBP           dBBBK'   dBP BB   dBP dBP dBP dBP dBBP    dBBBBK    ║
+║     dBP   dBP        dBP  dBP   dBBBBBP  dBP      dBP  BB  dBP    dBP BB     dBP  BB  dB' BB  dBP   dBBBBBP  dB' db   dBP  BB  dBP dBP dBP dBP dBP     dBP  BB    ║
+║    dBP   dBBBBP dBBBBP'  dBP            dBP      dBBBBBBB dBBBBP dBP dBP    dBBBBBBB dBBBBBB dBBBBP         dBBBBP'  dBBBBBBB dBP dBP dBP dBP dBBBBP  dBP  dB'    ║
+║                                                                                                                                                                   ║
+║                                                                                                                            Test description for a test package.   ║
+║                                                                                                        version: 1.0.0-SNAPSHOT-dGhpcyBpcyBhIGxvbmcgc3RyaW5nCg==   ║
+║                                                                                                                                                                   ║
+╙───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╜
