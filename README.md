@@ -66,7 +66,7 @@ $ npm install @soundslikeodd/package-banner --save-dev
 
 | Argument | Description | Required | Default |
 |-|-|-|-|
-| `packagePath` | Package.json file to use for information. | :check: |  |
+| `packagePath` | Package.json file to use for information. | :white_check_mark: |  |
 | `debug` | Print debug information, ex. package-banner config, and package.json. | :x: | `false` |
 | `hideScope` | Do not display package scope. | :x: | `false` |
 | `capitalCase` | Split package.json name on '-' and '_' and capitalize each word. | :x: | `false` |
