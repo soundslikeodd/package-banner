@@ -20,4 +20,6 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - run: npm ci
       - shell: bash
-        run: stty cols 132 rows 34 && npm test
+        run: |
+          resize -s 100 256
+          npm test
