@@ -1,5 +1,7 @@
 # package-banner
 
+![tests](https://github.com/soundslikeodd/package-banner/actions/workflows/test.yml/badge.svg?event=push)
+
 A CLI and NPM library to generate a console banner with meaningful package.json information.
 
 Using a combination of [figlet.js](https://github.com/patorjk/figlet.js) and [boxen](https://github.com/sindresorhus/boxen) a banner is displayed to the console with package.json information.  Inspired heavily by [asciiart-logo](https://github.com/tomi-vanek/asciiart-logo).
