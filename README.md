@@ -116,7 +116,7 @@ Ouput
 ```
 
 More complex example package banner with:
-* font override of `mini`
+* font override of `speed`
 * capital case
 * line break on words
 * hide package scope
