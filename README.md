@@ -1,6 +1,6 @@
 # package-banner
 
-![tests](https://github.com/soundslikeodd/package-banner/actions/workflows/test.yml/badge.svg?event=push)
+[![Tests](https://github.com/soundslikeodd/package-banner/actions/workflows/test.yml/badge.svg)](https://github.com/soundslikeodd/package-banner/actions/workflows/test.yml)
 
 A CLI and NPM library to generate a console banner with meaningful package.json information.
 
