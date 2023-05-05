@@ -19,7 +19,5 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - run: npm ci
-      - shell: bash
-        run: |
-          resize -s 100 256
-          npm test
+      - shell: 'script -q -e -c "bash {0}"'
+        run: npm test
