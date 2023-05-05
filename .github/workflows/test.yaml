@@ -19,5 +19,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - run: npm ci
-      - shell: 'script -q -e -c "bash {0}"'
-        run: npm test
+      - shell: bash
+        run: |
+          export COLUMNS=256
+          npm test
