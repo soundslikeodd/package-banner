@@ -45,7 +45,7 @@ describe('general usage tests', () => {
             './test/resources/packageNameFont.test.txt',
             {
                 packagePath: './test/resources/test-package.json',
-                packageNameFont: 'trek',
+                packageNameFont: 'Trek',
             }
         );
     });
