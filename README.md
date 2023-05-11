@@ -38,7 +38,7 @@ $ npx @soundslikeodd/package-banner
 
 ```
 $ package-banner -h
-Usage: package-banner.mjs <command> [options]
+Usage: package-banner.js <command> [options]
 
 Options:
       --version                Show version number                     [boolean]

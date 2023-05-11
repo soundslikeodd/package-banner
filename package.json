@@ -4,18 +4,18 @@
     "description": "NPM package banner generator.",
     "main": "index.js",
     "scripts": {
-        "pretest": "eslint --ext .js,.mjs .",
+        "pretest": "eslint --ext .js .",
         "test": "c8 mocha",
         "prepare": "husky install"
     },
     "type": "module",
-    "exports": "./index.mjs",
+    "exports": "./index.js",
     "files": [
-        "./index.mjs",
+        "./index.js",
         "./bin/*"
     ],
     "bin": {
-        "package-banner": "./bin/package-banner.mjs"
+        "package-banner": "./bin/package-banner.js"
     },
     "engines": {
         "node": ">=14.16"
@@ -40,9 +40,10 @@
         "eslint": "^8.39.0",
         "husky": "^8.0.3",
         "lint-staged": "^13.2.2",
-        "mocha": "^10.2.0"
+        "mocha": "^10.2.0",
+        "rollup": "^3.21.5"
     },
     "lint-staged": {
-        "*.{js,mjs,cjs}": "eslint --ext .js,.mjs,.cjs ."
+        "*.{js,cjs}": "eslint --ext .js,.cjs ."
     }
 }

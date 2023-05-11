@@ -2,7 +2,7 @@
 
 import fs from 'fs';
 import yargs from 'yargs';
-import packageBanner, {METADATA_ALIGN, ALIGN_RIGHT} from '../index.mjs';
+import packageBanner, {METADATA_ALIGN, ALIGN_RIGHT} from '../index.js';
 
 const argv = yargs(process.argv.slice(2))
     .usage('Usage: $0 <command> [options]')

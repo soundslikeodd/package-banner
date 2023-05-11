@@ -1,4 +1,4 @@
-import test from './testUtil.mjs';
+import test from './testUtil.js';
 
 describe('general boxen integration', () => {
     it('boxenOptions pass through', () => {
