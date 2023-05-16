@@ -1,0 +1,1 @@
+Package path './test/resources/invalid-test-package.json' does not exist.

@@ -21,6 +21,22 @@ describe('general usage tests', () => {
             }
         );
     });
+    it('invalid packagePath path', () => {
+        test(
+            './test/resources/invalidPackageConfigPath.text.txt',
+            {
+                packagePath: './test/resources/invalid-test-package.json',
+            }
+        );
+    });
+    it('broken package json', () => {
+        test(
+            './test/resources/brokenPackageJson.test.txt',
+            {
+                packagePath: './test/resources/broken-package.json',
+            }
+        );
+    });
     it('capitalCase', () => {
         test(
             './test/resources/capitalCase.test.txt',
@@ -67,6 +83,14 @@ describe('general usage tests', () => {
             }
         );
     });
+    it('unscoped package', () => {
+        test(
+            './test/resources/unscopedPackage.text.txt',
+            {
+                packagePath: './test/resources/unscoped-package.json',
+            }
+        );
+    });
     it('additionalPackageInfo', () => {
         test(
             './test/resources/additionalPackageInfo.test.txt',
@@ -75,6 +99,17 @@ describe('general usage tests', () => {
                 additionalPackageInfo: [
                     'author',
                     'license'
+                ],
+            }
+        );
+    });
+    it('empty additionalPackageInfo', () => {
+        test(
+            './test/resources/emptyAdditionalPackageInfo.test.txt',
+            {
+                packagePath: './test/resources/test-package.json',
+                additionalPackageInfo: [
+                    'doesNotExist'
                 ],
             }
         );
@@ -91,6 +126,15 @@ describe('general usage tests', () => {
                     'author',
                     'license'
                 ],
+            }
+        );
+    });
+    it('debug', () => {
+        test(
+            './test/resources/debug.test.txt',
+            {
+                packagePath: './test/resources/test-package.json',
+                debug: true,
             }
         );
     });

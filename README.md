@@ -4,7 +4,7 @@
 
 A CLI and NPM library to generate a console banner with meaningful package.json information.
 
-Using a combination of [figlet.js](https://github.com/patorjk/figlet.js) and [boxen](https://github.com/sindresorhus/boxen) a banner is displayed to the console with package.json information.  Inspired heavily by [asciiart-logo](https://github.com/tomi-vanek/asciiart-logo).
+Using a combination of [figlet.js](https://github.com/patorjk/figlet.js) a banner is displayed to the console with package.json information.  Inspired heavily by [asciiart-logo](https://github.com/tomi-vanek/asciiart-logo).
 
 Example packge banner output for this project with no custom configuration.
 
@@ -49,10 +49,9 @@ Options:
   -b, --breakOnWord            print package name with line break on words
                                                                        [boolean]
   -m, --metaDataAlign          alignment for package metadata, default 'right'
-  -a, --additionalPackageInfo  print package name with line break on words
-                                                                         [array]
+  -o, --borderStyle            border style, default 'BASIC'
+  -a, --additionalPackageInfo  additional package information to print   [array]
   -p, --packageNameFont        figlt.js font name
-  -x, --boxenOptions           boxen config as a JSON file
   -f, --figletOptions          figlt.js config as a JSON file
 ```
 
@@ -75,8 +74,8 @@ $ npm install @soundslikeodd/package-banner --save-dev
 | `breakOnWord` | Break package.json name on words. | :x: | `false` |
 | `packageNameFont` | figlet.js packaged font. | :x: | `''` |
 | `metaDataAlign` | Alignment of package.json metadata, ex. name, description. | :x: | `right` |
+| `borderStyle` | Border style to use for the encompassing box. | :x: | `basic` |
 | `additionalPackageInfo` | Array of package.json feilds to pull out. | :x: | `[]` |
-| `boxenOptions` | boxen config pass through, object | :x: | `{}` |
 | `figletOptions` | figlet.js config pass through, object | :x: | `{}` |
 
 ### Examples
@@ -188,46 +187,4 @@ Output
 ║                                                                                                version: 1.0.0   ║
 ║                                                                                                                 ║
 ╙─────────────────────────────────────────────────────────────────────────────────────────────────────────────────╜
-```
-
-Example of boxen overrides
-
-```javascript
-import packageBanner from '@soundslikeodd/package-banner';
-
-packageBanner(
-    {
-        boxenOptions: {
-            title: 'feild set legend',
-            titleAlignment: 'left',
-            borderStyle: {
-                topLeft: '*',
-                topRight: '*',
-                bottomLeft: '*',
-                bottomRight: '*',
-                top: '▭',
-                bottom: '▭',
-                left: '▯',
-                right: '▯',
-            },
-        },
-    }
-)
-```
-
-Output
-```
-* feild set legend ▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭*
-▯                                                                                      ▯
-▯                                                                     @soundslikeodd   ▯
-▯                      _                          _                                    ▯
-▯     _ __   __ _  ___| | ____ _  __ _  ___      | |__   __ _ _ __  _ __   ___ _ __    ▯
-▯    | '_ \ / _` |/ __| |/ / _` |/ _` |/ _ \_____| '_ \ / _` | '_ \| '_ \ / _ \ '__|   ▯
-▯    | |_) | (_| | (__|   < (_| | (_| |  __/_____| |_) | (_| | | | | | | |  __/ |      ▯
-▯    | .__/ \__,_|\___|_|\_\__,_|\__, |\___|     |_.__/ \__,_|_| |_|_| |_|\___|_|      ▯
-▯    |_|                         |___/                                                 ▯
-▯                                                      NPM package banner generator.   ▯
-▯                                                                     version: 1.0.0   ▯
-▯                                                                                      ▯
-*▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭*
 ```
