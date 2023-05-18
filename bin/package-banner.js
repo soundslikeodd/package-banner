@@ -35,11 +35,24 @@ const argv = yargs(process.argv.slice(2))
     .alias('a', 'additionalPackageInfo')
     .describe('packageNameFont', 'figlt.js font name')
     .alias('p', 'packageNameFont')
-    .config('figletOptions', configPath => JSON.parse(fs.readFileSync(configPath, 'utf-8')))
+    .config(
+        'figletOptions',
+        configPath => {
+            let parsedFigletOptions;
+            try {
+                parsedFigletOptions = JSON.parse(fs.readFileSync(configPath, 'utf-8'));
+            } catch (e) {
+                console.log(e);
+                process.exit(1);
+            }
+            return {
+                parsedFigletOptions,
+            };
+        }
+    )
     .describe('figletOptions', 'figlt.js config as a JSON file')
     .alias('f', 'figletOptions')
     .argv;
-console.log(argv.borderStyle);
 packageBanner(
     {
         packagePath: process.cwd() + '/package.json',
@@ -51,6 +64,6 @@ packageBanner(
         metaDataAlign: argv.metaDataAlign,
         borderStyle: argv.borderStyle,
         additionalPackageInfo: argv.additionalPackageInfo,
-        figletOptions: argv.figletOptions,
+        figletOptions: argv.parsedFigletOptions,
     }
 );
