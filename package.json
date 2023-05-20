@@ -3,7 +3,7 @@
     "version": "1.0.1",
     "description": "NPM package banner generator.",
     "scripts": {
-        "build": "babel index.js -d commonjs",
+        "prepack": "babel index.js -d commonjs",
         "pretest": "eslint --ext .js .",
         "test": "c8 mocha",
         "prepare": "husky install"
