@@ -30,7 +30,7 @@ const ROUNDED_BORDER = {
     B: '─',
     BR: '╯',
 };
-const SOLID_BORDER = {
+const BOLDER_BORDER = {
     TL: '█',
     T: '█',
     TR: '█',
@@ -74,7 +74,7 @@ export const NAMED_BORDERS = {
     [BASIC_BORDER_NAME]: BASIC_BORDER,
     bold: BOLD_BORDER,
     rounded: ROUNDED_BORDER,
-    solid: SOLID_BORDER,
+    bolder: BOLDER_BORDER,
     dash: DASH_BORDER,
     double: DOUBLE_BORDER,
     star: STAR_BORDER,

@@ -74,7 +74,7 @@ $ npm install @soundslikeodd/package-banner --save-dev
 | `breakOnWord` | Break package.json name on words. | :x: | `false` | |
 | `packageNameFont` | figlet.js packaged font. | :x: | `''` | |
 | `metaDataAlign` | Alignment of package.json metadata, ex. name, description. | :x: | `right` | |
-| `borderStyle` | Border style to use for the encompassing box. | :x: | `basic` | `basic`, `bold`, `rounded`, `solid`, `dash`, `double`, `star` |
+| `borderStyle` | Border style to use for the encompassing box. | :x: | `basic` | `basic`, `bold`, `rounded`, `bolder`, `dash`, `double`, `star` |
 | `additionalPackageInfo` | Array of package.json feilds to pull out. | :x: | `[]` | |
 | `figletOptions` | figlet.js config pass through, object | :x: | `{}` | |
 

@@ -6,7 +6,7 @@ import packageBanner,
 {
     METADATA_ALIGN,
     ALIGN_RIGHT
-} from '../index.js';
+} from '../src/index.js';
 import {
     BASIC_BORDER_NAME
 } from '../src/borders.js';

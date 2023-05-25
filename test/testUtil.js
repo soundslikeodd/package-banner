@@ -1,6 +1,6 @@
 import fs from 'fs';
 import { expect } from 'chai';
-import packageBanner from '../index.js';
+import packageBanner from '../src/index.js';
 
 const test = (
     consoleSnapshotFile,

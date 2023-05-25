@@ -4,7 +4,7 @@ import ansiAlign from 'ansi-align';
 import {
     NAMED_BORDERS,
     BASIC_BORDER_NAME
-} from './src/borders.js';
+} from './borders.js';
 
 const SPACE = ' ';
 const EMPTY_STRING = '';

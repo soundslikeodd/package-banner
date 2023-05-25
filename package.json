@@ -3,22 +3,21 @@
     "version": "1.0.1",
     "description": "NPM package banner generator.",
     "scripts": {
-        "prepack": "babel index.js -d commonjs",
+        "prepack": "babel ./src/index.js -d commonjs",
         "pretest": "eslint --ext .js .",
         "test": "c8 mocha",
         "prepare": "husky install"
     },
     "main": "commonjs/index.js",
-    "module": "index.js",
+    "module": "./srcindex.js",
     "type": "module",
     "exports": {
         ".": {
             "require": "./commonjs/index.js",
-            "default": "./index.js"
+            "default": "./src/index.js"
         }
     },
     "files": [
-        "./index.js",
         "./commonjs/*",
         "./bin/*",
         "./src/*"
