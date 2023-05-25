@@ -65,18 +65,18 @@ $ npm install @soundslikeodd/package-banner --save-dev
 
 ### Usage
 
-| Argument | Description | Required | Default |
-|-|-|-|-|
-| `packagePath` | Package.json file to use for information. | :white_check_mark: |  |
-| `debug` | Print debug information, ex. package-banner config, and package.json. | :x: | `false` |
-| `hideScope` | Do not display package scope. | :x: | `false` |
-| `capitalCase` | Split package.json name on '-' and '_' and capitalize each word. | :x: | `false` |
-| `breakOnWord` | Break package.json name on words. | :x: | `false` |
-| `packageNameFont` | figlet.js packaged font. | :x: | `''` |
-| `metaDataAlign` | Alignment of package.json metadata, ex. name, description. | :x: | `right` |
-| `borderStyle` | Border style to use for the encompassing box. | :x: | `basic` |
-| `additionalPackageInfo` | Array of package.json feilds to pull out. | :x: | `[]` |
-| `figletOptions` | figlet.js config pass through, object | :x: | `{}` |
+| Argument | Description | Required | Default | options |
+|-|-|-|-|-|
+| `packagePath` | Package.json file to use for information. | :white_check_mark: |  | |
+| `debug` | Print debug information, ex. package-banner config, and package.json. | :x: | `false` | |
+| `hideScope` | Do not display package scope. | :x: | `false` | |
+| `capitalCase` | Split package.json name on '-' and '_' and capitalize each word. | :x: | `false` | |
+| `breakOnWord` | Break package.json name on words. | :x: | `false` | |
+| `packageNameFont` | figlet.js packaged font. | :x: | `''` | |
+| `metaDataAlign` | Alignment of package.json metadata, ex. name, description. | :x: | `right` | |
+| `borderStyle` | Border style to use for the encompassing box. | :x: | `basic` | `basic`, `bold`, `rounded`, `solid`, `dash`, `double`, `star` |
+| `additionalPackageInfo` | Array of package.json feilds to pull out. | :x: | `[]` | |
+| `figletOptions` | figlet.js config pass through, object | :x: | `{}` | |
 
 ### Examples
 

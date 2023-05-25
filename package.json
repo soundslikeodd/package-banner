@@ -20,7 +20,8 @@
     "files": [
         "./index.js",
         "./commonjs/*",
-        "./bin/*"
+        "./bin/*",
+        "./src/*"
     ],
     "bin": {
         "package-banner": "./bin/package-banner.js"

@@ -1,6 +1,10 @@
 import fs from 'fs';
 import figlet from 'figlet';
 import ansiAlign from 'ansi-align';
+import {
+    NAMED_BORDERS,
+    BASIC_BORDER_NAME
+} from './src/borders.js';
 
 const SPACE = ' ';
 const EMPTY_STRING = '';
@@ -11,31 +15,6 @@ export const METADATA_ALIGN = [
     'center',
     ALIGN_RIGHT,
 ];
-export const BASIC_BORDER_NAME = 'basic';
-const BASIC_BORDER = {
-    TL: '┌',
-    T: '-',
-    TR: '┐',
-    L: '|',
-    R: '|',
-    BL: '└',
-    B: '-',
-    BR: '┘',
-};
-const BOLD_BORDER = {
-    TL: '▛',
-    T: '▀',
-    TR: '▜',
-    L: '▌',
-    R: '▐',
-    BL: '▙',
-    B: '▄',
-    BR: '▟',
-};
-const NAMED_BORDERS = {
-    [BASIC_BORDER_NAME]: BASIC_BORDER,
-    bold: BOLD_BORDER,
-};
 
 const toCapitalCase = str => str
     .replace(/(-|_|\/)/g, SPACE)
@@ -128,7 +107,7 @@ const packageBanner = config => {
             align: validMetaDateAlignment,
         }
     );
-    const borders = NAMED_BORDERS[borderStyle] || BASIC_BORDER;
+    const borders = NAMED_BORDERS[borderStyle] || NAMED_BORDERS[BASIC_BORDER_NAME];
     const logestLineLength = Math.max(...insideContent.map(l => l.length));
     const left = borders.L + SPACE;
     const right = SPACE + borders.R;

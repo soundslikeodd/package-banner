@@ -5,9 +5,11 @@ import yargs from 'yargs';
 import packageBanner,
 {
     METADATA_ALIGN,
-    ALIGN_RIGHT,
-    BASIC_BORDER_NAME
+    ALIGN_RIGHT
 } from '../index.js';
+import {
+    BASIC_BORDER_NAME
+} from '../src/borders.js';
 
 const argv = yargs(process.argv.slice(2))
     .usage('Usage: $0 <command> [options]')
