@@ -3,7 +3,8 @@ import figlet from 'figlet';
 import ansiAlign from 'ansi-align';
 import {
     NAMED_BORDERS,
-    BASIC_BORDER_NAME
+    BASIC_BORDER_NAME,
+    stringToBorder
 } from './borders.js';
 
 const SPACE = ' ';
@@ -107,7 +108,7 @@ const packageBanner = config => {
             align: validMetaDateAlignment,
         }
     );
-    const borders = NAMED_BORDERS[borderStyle] || NAMED_BORDERS[BASIC_BORDER_NAME];
+    const borders = NAMED_BORDERS[borderStyle] || stringToBorder(borderStyle) || NAMED_BORDERS[BASIC_BORDER_NAME];
     const logestLineLength = Math.max(...insideContent.map(l => l.length));
     const left = borders.L + SPACE;
     const right = SPACE + borders.R;

@@ -79,3 +79,31 @@ export const NAMED_BORDERS = {
     double: DOUBLE_BORDER,
     star: STAR_BORDER,
 };
+export const NAMED_BORDER_KEYS = Object.keys(NAMED_BORDERS);
+const borderFiller = ['·','·','·','·','·','·','·','·'];
+const borderStyleKeys = ['T', 'TR', 'R', 'BR', 'B', 'BL', 'L', 'TL'];
+const borderStyleLength = borderStyleKeys.length;
+export const stringToBorder = borderString => {
+    if(
+        !borderString
+        || typeof borderString !== 'string'
+        || !borderString.includes(',')
+    ) return null;
+    const borderArray = borderString.split(',');
+    const filledBorderArray = [
+        ...borderArray.slice(0, borderStyleLength),
+        ...borderFiller.slice(
+            0,
+            borderStyleLength - Math.min(borderArray.length, borderStyleLength)
+        ),
+    ];
+    return filledBorderArray.reduce(
+        (acc, e, i) => (
+            {
+                ...acc,
+                [borderStyleKeys[i]]: e,
+            }
+        ),
+        {}
+    );
+};
