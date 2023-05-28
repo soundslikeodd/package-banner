@@ -1,10 +1,10 @@
 import { expect } from 'chai';
-import test from './testUtil.js';
+import { testNodeApi } from './testUtil.js';
 import { stringToBorder } from '../src/borders.js';
 
 describe('general border style', () => {
     it('none named or custom border style', () => {
-        test(
+        testNodeApi(
             './test/resources/borderStyleNotNamedOrCustomStyle.test.txt',
             {
                 packagePath: './test/resources/test-package.json',
@@ -13,7 +13,7 @@ describe('general border style', () => {
         );
     });
     it('bold border style', () => {
-        test(
+        testNodeApi(
             './test/resources/borderStyleBold.test.txt',
             {
                 packagePath: './test/resources/test-package.json',
@@ -23,7 +23,7 @@ describe('general border style', () => {
     });
     // TODO: test the rest of the named border styles
     it('custom border style string', () => {
-        test(
+        testNodeApi(
             './test/resources/borderStyle12345678.test.txt',
             {
                 packagePath: './test/resources/test-package.json',

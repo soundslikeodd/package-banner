@@ -51,7 +51,8 @@
         "husky": "^8.0.3",
         "lint-staged": "^13.2.2",
         "mocha": "^10.2.0",
-        "rollup": "^3.21.5"
+        "rollup": "^3.21.5",
+        "sinon": "^15.1.0"
     },
     "lint-staged": {
         "*.{js,cjs}": "eslint --ext .js,.cjs ."

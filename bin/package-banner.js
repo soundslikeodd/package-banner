@@ -1,6 +1,5 @@
 #!/usr/bin/env node
 
-import fs from 'fs';
 import yargs from 'yargs';
 import packageBanner,
 {
@@ -10,6 +9,9 @@ import packageBanner,
 import {
     BASIC_BORDER_NAME
 } from '../src/borders.js';
+import figletConfigProcessing from '../src/figletUtils';
+
+console.log('this is a test');
 
 const argv = yargs(process.argv.slice(2))
     .usage('Usage: $0 <command> [options]')
@@ -17,7 +19,9 @@ const argv = yargs(process.argv.slice(2))
     .alias('h', 'help')
     .boolean('debug')
     .describe('d', 'print debug info')
+    .describe('p', 'package.json file to use')
     .alias('d', 'debug')
+    .alias('p', 'package')
     .boolean('hideScope')
     .describe('s', 'hide package scope')
     .alias('s', 'hideScope')
@@ -36,28 +40,14 @@ const argv = yargs(process.argv.slice(2))
     .describe('a', 'additional package information to print')
     .alias('a', 'additionalPackageInfo')
     .describe('packageNameFont', 'figlt.js font name')
-    .alias('p', 'packageNameFont')
-    .config(
-        'figletOptions',
-        configPath => {
-            let parsedFigletOptions;
-            try {
-                parsedFigletOptions = JSON.parse(fs.readFileSync(configPath, 'utf-8'));
-            } catch (e) {
-                console.log(e);
-                process.exit(1);
-            }
-            return {
-                parsedFigletOptions,
-            };
-        }
-    )
+    .alias('n', 'packageNameFont')
+    .config('figletOptions', figletConfigProcessing)
     .describe('figletOptions', 'figlt.js config as a JSON file')
     .alias('f', 'figletOptions')
     .argv;
 packageBanner(
     {
-        packagePath: process.cwd() + '/package.json',
+        packagePath: argv.package || process.cwd() + '/package.json',
         debug: argv.debug,
         hideScope: argv.hideScope,
         capitalCase: argv.capitalCase,

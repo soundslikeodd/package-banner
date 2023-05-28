@@ -44,14 +44,15 @@ Options:
       --version                Show version number                     [boolean]
   -h, --help                   Show help                               [boolean]
   -d, --debug                  print debug info                        [boolean]
+  -p, --package                package.json file to use
   -s, --hideScope              hide package scope                      [boolean]
   -c, --capitalCase            print packge name in capital case       [boolean]
   -b, --breakOnWord            print package name with line break on words
                                                                        [boolean]
   -m, --metaDataAlign          alignment for package metadata, default 'right'
-  -o, --borderStyle            border style, default 'BASIC'
+  -o, --borderStyle            border style, default 'basic'
   -a, --additionalPackageInfo  additional package information to print   [array]
-  -p, --packageNameFont        figlt.js font name
+  -n, --packageNameFont        figlt.js font name
   -f, --figletOptions          figlt.js config as a JSON file
 ```
 

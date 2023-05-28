@@ -1,20 +1,20 @@
-import test from './testUtil.js';
+import { testNodeApi } from './testUtil.js';
 
 describe('general usage tests', () => {
     it('no config', () => {
-        test(
+        testNodeApi(
             'Package path not set.',
             undefined
         );
     });
     it('empty config', () => {
-        test(
+        testNodeApi(
             'Package path not set.',
             {}
         );
     });
     it('just packagePath config', () => {
-        test(
+        testNodeApi(
             './test/resources/emptyConfig.test.txt',
             {
                 packagePath: './test/resources/test-package.json',
@@ -22,7 +22,7 @@ describe('general usage tests', () => {
         );
     });
     it('invalid packagePath path', () => {
-        test(
+        testNodeApi(
             './test/resources/invalidPackageConfigPath.text.txt',
             {
                 packagePath: './test/resources/invalid-test-package.json',
@@ -30,7 +30,7 @@ describe('general usage tests', () => {
         );
     });
     it('broken package json', () => {
-        test(
+        testNodeApi(
             './test/resources/brokenPackageJson.test.txt',
             {
                 packagePath: './test/resources/broken-package.json',
@@ -38,7 +38,7 @@ describe('general usage tests', () => {
         );
     });
     it('capitalCase', () => {
-        test(
+        testNodeApi(
             './test/resources/capitalCase.test.txt',
             {
                 packagePath: './test/resources/test-package.json',
@@ -47,7 +47,7 @@ describe('general usage tests', () => {
         );
     });
     it('breakOnWord', () => {
-        test(
+        testNodeApi(
             './test/resources/breakOnWord.test.txt',
             {
                 packagePath: './test/resources/test-package.json',
@@ -57,7 +57,7 @@ describe('general usage tests', () => {
         );
     });
     it('packageNameFont', () => {
-        test(
+        testNodeApi(
             './test/resources/packageNameFont.test.txt',
             {
                 packagePath: './test/resources/test-package.json',
@@ -66,7 +66,7 @@ describe('general usage tests', () => {
         );
     });
     it('metaDataAlign', () => {
-        test(
+        testNodeApi(
             './test/resources/metaDataAlign.test.txt',
             {
                 packagePath: './test/resources/test-package.json',
@@ -75,7 +75,7 @@ describe('general usage tests', () => {
         );
     });
     it('invalid metaDataAlign', () => {
-        test(
+        testNodeApi(
             './test/resources/invalidMetaDataAlign.test.txt',
             {
                 packagePath: './test/resources/test-package.json',
@@ -84,7 +84,7 @@ describe('general usage tests', () => {
         );
     });
     it('unscoped package', () => {
-        test(
+        testNodeApi(
             './test/resources/unscopedPackage.text.txt',
             {
                 packagePath: './test/resources/unscoped-package.json',
@@ -92,7 +92,7 @@ describe('general usage tests', () => {
         );
     });
     it('additionalPackageInfo', () => {
-        test(
+        testNodeApi(
             './test/resources/additionalPackageInfo.test.txt',
             {
                 packagePath: './test/resources/test-package.json',
@@ -104,7 +104,7 @@ describe('general usage tests', () => {
         );
     });
     it('empty additionalPackageInfo', () => {
-        test(
+        testNodeApi(
             './test/resources/emptyAdditionalPackageInfo.test.txt',
             {
                 packagePath: './test/resources/test-package.json',
@@ -115,7 +115,7 @@ describe('general usage tests', () => {
         );
     });
     it('no double additionalPackageInfo', () => {
-        test(
+        testNodeApi(
             './test/resources/additionalPackageInfo.test.txt', // explicitly the sane as additionalPackageInfo test
             {
                 packagePath: './test/resources/test-package.json',
@@ -130,7 +130,7 @@ describe('general usage tests', () => {
         );
     });
     it('debug', () => {
-        test(
+        testNodeApi(
             './test/resources/debug.test.txt',
             {
                 packagePath: './test/resources/test-package.json',
