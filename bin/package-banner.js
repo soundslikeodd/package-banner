@@ -11,8 +11,6 @@ import {
 } from '../src/borders.js';
 import figletConfigProcessing from '../src/figletUtils';
 
-console.log('this is a test');
-
 const argv = yargs(process.argv.slice(2))
     .usage('Usage: $0 <command> [options]')
     .help('h')
