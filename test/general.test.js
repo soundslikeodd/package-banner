@@ -1,28 +1,44 @@
-import test from './testUtil.mjs';
+import { testNodeApi } from './testUtil.js';
 
 describe('general usage tests', () => {
     it('no config', () => {
-        test(
+        testNodeApi(
             'Package path not set.',
             undefined
         );
     });
     it('empty config', () => {
-        test(
+        testNodeApi(
             'Package path not set.',
             {}
         );
     });
     it('just packagePath config', () => {
-        test(
+        testNodeApi(
             './test/resources/emptyConfig.test.txt',
             {
                 packagePath: './test/resources/test-package.json',
             }
         );
     });
+    it('invalid packagePath path', () => {
+        testNodeApi(
+            './test/resources/invalidPackageConfigPath.text.txt',
+            {
+                packagePath: './test/resources/invalid-test-package.json',
+            }
+        );
+    });
+    it('broken package json', () => {
+        testNodeApi(
+            './test/resources/brokenPackageJson.test.txt',
+            {
+                packagePath: './test/resources/broken-package.json',
+            }
+        );
+    });
     it('capitalCase', () => {
-        test(
+        testNodeApi(
             './test/resources/capitalCase.test.txt',
             {
                 packagePath: './test/resources/test-package.json',
@@ -31,7 +47,7 @@ describe('general usage tests', () => {
         );
     });
     it('breakOnWord', () => {
-        test(
+        testNodeApi(
             './test/resources/breakOnWord.test.txt',
             {
                 packagePath: './test/resources/test-package.json',
@@ -41,7 +57,7 @@ describe('general usage tests', () => {
         );
     });
     it('packageNameFont', () => {
-        test(
+        testNodeApi(
             './test/resources/packageNameFont.test.txt',
             {
                 packagePath: './test/resources/test-package.json',
@@ -50,7 +66,7 @@ describe('general usage tests', () => {
         );
     });
     it('metaDataAlign', () => {
-        test(
+        testNodeApi(
             './test/resources/metaDataAlign.test.txt',
             {
                 packagePath: './test/resources/test-package.json',
@@ -59,7 +75,7 @@ describe('general usage tests', () => {
         );
     });
     it('invalid metaDataAlign', () => {
-        test(
+        testNodeApi(
             './test/resources/invalidMetaDataAlign.test.txt',
             {
                 packagePath: './test/resources/test-package.json',
@@ -67,8 +83,16 @@ describe('general usage tests', () => {
             }
         );
     });
+    it('unscoped package', () => {
+        testNodeApi(
+            './test/resources/unscopedPackage.text.txt',
+            {
+                packagePath: './test/resources/unscoped-package.json',
+            }
+        );
+    });
     it('additionalPackageInfo', () => {
-        test(
+        testNodeApi(
             './test/resources/additionalPackageInfo.test.txt',
             {
                 packagePath: './test/resources/test-package.json',
@@ -79,8 +103,19 @@ describe('general usage tests', () => {
             }
         );
     });
+    it('empty additionalPackageInfo', () => {
+        testNodeApi(
+            './test/resources/emptyAdditionalPackageInfo.test.txt',
+            {
+                packagePath: './test/resources/test-package.json',
+                additionalPackageInfo: [
+                    'doesNotExist'
+                ],
+            }
+        );
+    });
     it('no double additionalPackageInfo', () => {
-        test(
+        testNodeApi(
             './test/resources/additionalPackageInfo.test.txt', // explicitly the sane as additionalPackageInfo test
             {
                 packagePath: './test/resources/test-package.json',
@@ -91,6 +126,15 @@ describe('general usage tests', () => {
                     'author',
                     'license'
                 ],
+            }
+        );
+    });
+    it('debug', () => {
+        testNodeApi(
+            './test/resources/debug.test.txt',
+            {
+                packagePath: './test/resources/test-package.json',
+                debug: true,
             }
         );
     });

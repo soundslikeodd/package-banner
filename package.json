@@ -2,20 +2,28 @@
     "name": "@soundslikeodd/package-banner",
     "version": "1.0.1",
     "description": "NPM package banner generator.",
-    "main": "index.js",
     "scripts": {
-        "pretest": "eslint --ext .js,.mjs .",
+        "prepack": "babel ./src/index.js -d commonjs",
+        "pretest": "eslint --ext .js .",
         "test": "c8 mocha",
         "prepare": "husky install"
     },
+    "main": "commonjs/index.js",
+    "module": "./srcindex.js",
     "type": "module",
-    "exports": "./index.mjs",
+    "exports": {
+        ".": {
+            "require": "./commonjs/index.js",
+            "default": "./src/index.js"
+        }
+    },
     "files": [
-        "./index.mjs",
-        "./bin/*"
+        "./commonjs/*",
+        "./bin/*",
+        "./src/*"
     ],
     "bin": {
-        "package-banner": "./bin/package-banner.mjs"
+        "package-banner": "./bin/package-banner.js"
     },
     "engines": {
         "node": ">=14.16"
@@ -30,19 +38,23 @@
     "license": "ISC",
     "dependencies": {
         "ansi-align": "^3.0.1",
-        "boxen": "^7.0.2",
         "figlet": "^1.6.0",
         "yargs": "^17.7.1"
     },
     "devDependencies": {
+        "@babel/cli": "^7.21.5",
+        "@babel/core": "^7.21.8",
+        "@babel/plugin-transform-modules-commonjs": "^7.21.5",
         "c8": "^7.13.0",
         "chai": "^4.3.7",
         "eslint": "^8.39.0",
         "husky": "^8.0.3",
         "lint-staged": "^13.2.2",
-        "mocha": "^10.2.0"
+        "mocha": "^10.2.0",
+        "rollup": "^3.21.5",
+        "sinon": "^15.1.0"
     },
     "lint-staged": {
-        "*.{js,mjs,cjs}": "eslint --ext .js,.mjs,.cjs ."
+        "*.{js,cjs}": "eslint --ext .js,.cjs ."
     }
 }

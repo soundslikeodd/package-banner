@@ -1,7 +1,11 @@
 import fs from 'fs';
 import figlet from 'figlet';
-import boxen from 'boxen';
 import ansiAlign from 'ansi-align';
+import {
+    NAMED_BORDERS,
+    BASIC_BORDER_NAME,
+    stringToBorder
+} from './borders.js';
 
 const SPACE = ' ';
 const EMPTY_STRING = '';
@@ -28,8 +32,8 @@ const packageBanner = config => {
         hideScope = false,
         packageNameFont = EMPTY_STRING,
         metaDataAlign = ALIGN_RIGHT,
+        borderStyle,
         additionalPackageInfo = [],
-        boxenOptions = {},
         figletOptions = {},
     } = config || {};
     if (debug) console.log(JSON.stringify(config, null, 2));
@@ -49,7 +53,7 @@ const packageBanner = config => {
         console.warn(`Package path '${packagePath}' does not contain parsable JSON.`);
         return;
     }
-    if (debug) console.log(packageObj);
+    if (debug) console.log(JSON.stringify(packageObj, null, 2));
     const validMetaDateAlignment = !METADATA_ALIGN.includes(metaDataAlign)
         ? (() => {
             console.warn(`Metadata alignment '${metaDataAlign}' is not valid.  Accepted alignments ${METADATA_ALIGN.join(', ')}. Falling back to default 'right'.`);
@@ -80,37 +84,42 @@ const packageBanner = config => {
             ...figletOptions,
         }
     );
-    console.log(
-        boxen(
-            ansiAlign(
-                (hideScope || !scope ? EMPTY_STRING : scope + LINE_BREAK)
-                + banner
-                + LINE_BREAK
-                + [
-                    metaInfoPrep(description),
-                    metaInfoPrep(version, v => `version: ${v}`),
-                    ...(additionalPackageInfo.filter(i => ![
-                        'name',
-                        'description',
-                        'version',
-                    ].includes(i))
-                        .reduce(
-                            (acc, key) => [...acc, metaInfoPrep(packageObj[key], v => `${key}: ${v}`)],
-                            []
-                        )
-                        .filter(i => i !== EMPTY_STRING)),
-                ].join(LINE_BREAK),
-                {
-                    align: validMetaDateAlignment,
-                }
-            ),
-            {
-                padding: 1,
-                borderStyle: 'singleDouble',
-                ...boxenOptions,
-            }
-        )
+    const insideContent = [
+        ...(hideScope || !scope ? [] : [scope]),
+        ...banner.split('\n'),
+        ...[
+            metaInfoPrep(description),
+            metaInfoPrep(version, v => `version: ${v}`),
+            ...(additionalPackageInfo.filter(i => ![
+                'name',
+                'description',
+                'version',
+            ].includes(i))
+                .reduce(
+                    (acc, key) => [...acc, metaInfoPrep(packageObj[key], v => `${key}: ${v}`)],
+                    []
+                )
+                .filter(i => i !== EMPTY_STRING)),
+        ]
+    ];
+    const inside = ansiAlign(
+        insideContent.join(LINE_BREAK),
+        {
+            align: validMetaDateAlignment,
+        }
     );
+    const borders = NAMED_BORDERS[borderStyle] || stringToBorder(borderStyle) || NAMED_BORDERS[BASIC_BORDER_NAME];
+    const logestLineLength = Math.max(...insideContent.map(l => l.length));
+    const left = borders.L + SPACE;
+    const right = SPACE + borders.R;
+    console.log(borders.TL + Array(logestLineLength + 2).fill(borders.T).join(EMPTY_STRING) + borders.TR);
+    console.log(borders.L + Array(logestLineLength + 2).fill(SPACE).join(EMPTY_STRING) + borders.R);
+    inside.split(LINE_BREAK).forEach(line => {
+        const padding = Array(logestLineLength - line.length).fill(SPACE).join(EMPTY_STRING);
+        console.log(left + line + padding + right);
+    });
+    console.log(borders.L + Array(logestLineLength + 2).fill(SPACE).join(EMPTY_STRING) + borders.R);
+    console.log(borders.BL + Array(logestLineLength + 2).fill(borders.B).join(EMPTY_STRING) + borders.BR);
 };
 
 export default packageBanner;
