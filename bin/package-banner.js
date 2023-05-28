@@ -9,7 +9,7 @@ import packageBanner,
 import {
     BASIC_BORDER_NAME
 } from '../src/borders.js';
-import figletConfigProcessing from '../src/figletUtils';
+import figletConfigProcessing from '../src/figletUtils.js';
 
 const argv = yargs(process.argv.slice(2))
     .usage('Usage: $0 <command> [options]')
