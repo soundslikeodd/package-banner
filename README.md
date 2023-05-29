@@ -84,7 +84,7 @@ $ npm install @soundslikeodd/package-banner --save-dev
 Some what simple package banner with `capitalCase` and `breakOnWord`
 
 ```javascript
-import packageBanner from '@soundslikeodd/package-banner';
+import { packageBanner } from '@soundslikeodd/package-banner';
 
 packageBanner(
     {
@@ -123,7 +123,7 @@ More complex example package banner with:
 * meta data alignment to the left
 
 ```javascript
-import packageBanner from '@soundslikeodd/package-banner';
+import { packageBanner } from '@soundslikeodd/package-banner';
 
 packageBanner(
     {
@@ -161,7 +161,7 @@ Output
 Example of figlet.js overrides
 
 ```javascript
-import packageBanner from '@soundslikeodd/package-banner';
+import { packageBanner } from '@soundslikeodd/package-banner';
 
 packageBanner(
     {

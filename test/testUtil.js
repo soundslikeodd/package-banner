@@ -1,7 +1,7 @@
 import fs from 'fs';
 import { expect } from 'chai';
 import sinon from 'sinon';
-import packageBanner from '../src/index.js';
+import packageBanner from '../src/packageBanner.js';
 import figletConfigProcessing from '../src/figletUtils.js';
 
 const readSnapshotFile = file => (
