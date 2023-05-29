@@ -9,7 +9,7 @@
         "prepare": "husky install"
     },
     "main": "commonjs/index.js",
-    "module": "./srcindex.js",
+    "module": "./src/index.js",
     "type": "module",
     "exports": {
         ".": {
