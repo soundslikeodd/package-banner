@@ -1,5 +1,16 @@
 {
-  "packagePath": "./test/resources/test-package.json",
+  "packageJson": {
+    "name": "@soundslikeodd/test-package-banner",
+    "version": "1.0.0-SNAPSHOT-dGhpcyBpcyBhIGxvbmcgc3RyaW5nCg==",
+    "description": "Test description for a test package.",
+    "main": "index.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [],
+    "author": "A persion <person@nowhere.com>",
+    "license": "ISC"
+  },
   "debug": true
 }
 {

@@ -1,13 +1,18 @@
 import { expect } from 'chai';
-import { testNodeApi } from './testUtil.js';
+import {
+    testNodeApi,
+    readJsonFile
+} from './testUtil.js';
 import { stringToBorder } from '../src/borders.js';
+
+const testPackageJson = readJsonFile('./test/resources/test-package.json');
 
 describe('general border style', () => {
     it('none named or custom border style', () => {
         testNodeApi(
             './test/resources/borderStyleNotNamedOrCustomStyle.test.txt',
             {
-                packagePath: './test/resources/test-package.json',
+                packageJson: testPackageJson,
                 borderStyle: 'notanamedorsuctomstyle',
             }
         );
@@ -16,7 +21,7 @@ describe('general border style', () => {
         testNodeApi(
             './test/resources/borderStyleBold.test.txt',
             {
-                packagePath: './test/resources/test-package.json',
+                packageJson: testPackageJson,
                 borderStyle: 'bold',
             }
         );
@@ -26,7 +31,7 @@ describe('general border style', () => {
         testNodeApi(
             './test/resources/borderStyle12345678.test.txt',
             {
-                packagePath: './test/resources/test-package.json',
+                packageJson: testPackageJson,
                 borderStyle: '1,2,3,4,5,6,7,8',
             }
         );

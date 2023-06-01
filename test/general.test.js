@@ -1,15 +1,21 @@
-import { testNodeApi } from './testUtil.js';
+import {
+    testNodeApi,
+    readJsonFile
+} from './testUtil.js';
+
+const testPackageJson = readJsonFile('./test/resources/test-package.json');
+const unscopedPackageJson = readJsonFile('./test/resources/unscoped-package.json');
 
 describe('general usage tests', () => {
     it('no config', () => {
         testNodeApi(
-            'Package path not set.',
+            'Package json \'undefined\' is not a valid type.',
             undefined
         );
     });
     it('empty config', () => {
         testNodeApi(
-            'Package path not set.',
+            'Package json \'undefined\' is not a valid type.',
             {}
         );
     });
@@ -17,23 +23,7 @@ describe('general usage tests', () => {
         testNodeApi(
             './test/resources/emptyConfig.test.txt',
             {
-                packagePath: './test/resources/test-package.json',
-            }
-        );
-    });
-    it('invalid packagePath path', () => {
-        testNodeApi(
-            './test/resources/invalidPackageConfigPath.text.txt',
-            {
-                packagePath: './test/resources/invalid-test-package.json',
-            }
-        );
-    });
-    it('broken package json', () => {
-        testNodeApi(
-            './test/resources/brokenPackageJson.test.txt',
-            {
-                packagePath: './test/resources/broken-package.json',
+                packageJson: testPackageJson,
             }
         );
     });
@@ -41,7 +31,7 @@ describe('general usage tests', () => {
         testNodeApi(
             './test/resources/capitalCase.test.txt',
             {
-                packagePath: './test/resources/test-package.json',
+                packageJson: testPackageJson,
                 capitalCase: true,
             }
         );
@@ -50,7 +40,7 @@ describe('general usage tests', () => {
         testNodeApi(
             './test/resources/breakOnWord.test.txt',
             {
-                packagePath: './test/resources/test-package.json',
+                packageJson: testPackageJson,
                 capitalCase: true,
                 breakOnWord: true,
             }
@@ -60,7 +50,7 @@ describe('general usage tests', () => {
         testNodeApi(
             './test/resources/packageNameFont.test.txt',
             {
-                packagePath: './test/resources/test-package.json',
+                packageJson: testPackageJson,
                 packageNameFont: 'Trek',
             }
         );
@@ -69,7 +59,7 @@ describe('general usage tests', () => {
         testNodeApi(
             './test/resources/metaDataAlign.test.txt',
             {
-                packagePath: './test/resources/test-package.json',
+                packageJson: testPackageJson,
                 metaDataAlign: 'left',
             }
         );
@@ -78,7 +68,7 @@ describe('general usage tests', () => {
         testNodeApi(
             './test/resources/invalidMetaDataAlign.test.txt',
             {
-                packagePath: './test/resources/test-package.json',
+                packageJson: testPackageJson,
                 metaDataAlign: 'not valid',
             }
         );
@@ -87,7 +77,7 @@ describe('general usage tests', () => {
         testNodeApi(
             './test/resources/unscopedPackage.text.txt',
             {
-                packagePath: './test/resources/unscoped-package.json',
+                packageJson: unscopedPackageJson,
             }
         );
     });
@@ -95,7 +85,7 @@ describe('general usage tests', () => {
         testNodeApi(
             './test/resources/additionalPackageInfo.test.txt',
             {
-                packagePath: './test/resources/test-package.json',
+                packageJson: testPackageJson,
                 additionalPackageInfo: [
                     'author',
                     'license'
@@ -107,7 +97,7 @@ describe('general usage tests', () => {
         testNodeApi(
             './test/resources/emptyAdditionalPackageInfo.test.txt',
             {
-                packagePath: './test/resources/test-package.json',
+                packageJson: testPackageJson,
                 additionalPackageInfo: [
                     'doesNotExist'
                 ],
@@ -118,7 +108,7 @@ describe('general usage tests', () => {
         testNodeApi(
             './test/resources/additionalPackageInfo.test.txt', // explicitly the sane as additionalPackageInfo test
             {
-                packagePath: './test/resources/test-package.json',
+                packageJson: testPackageJson,
                 additionalPackageInfo: [
                     'version', // this will get removed additionalPackageInfo filter
                     'description', // this will get removed additionalPackageInfo filter
@@ -133,7 +123,7 @@ describe('general usage tests', () => {
         testNodeApi(
             './test/resources/debug.test.txt',
             {
-                packagePath: './test/resources/test-package.json',
+                packageJson: testPackageJson,
                 debug: true,
             }
         );

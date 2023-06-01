@@ -5,11 +5,14 @@ import packageBanner,
 {
     METADATA_ALIGN,
     ALIGN_RIGHT
-} from '../src/index.js';
+} from '../src/packageBanner.js';
 import {
     BASIC_BORDER_NAME
 } from '../src/borders.js';
-import figletConfigProcessing from '../src/figletUtils.js';
+import {
+    figletConfigProcessing,
+    loadPackageJson
+} from '../src/fileUtils.js';
 
 const argv = yargs(process.argv.slice(2))
     .usage('Usage: $0 <command> [options]')
@@ -43,9 +46,10 @@ const argv = yargs(process.argv.slice(2))
     .describe('figletOptions', 'figlt.js config as a JSON file')
     .alias('f', 'figletOptions')
     .argv;
+const packageJson = loadPackageJson(argv.package || process.cwd() + '/package.json');
 packageBanner(
     {
-        packagePath: argv.package || process.cwd() + '/package.json',
+        packageJson: packageJson,
         debug: argv.debug,
         hideScope: argv.hideScope,
         capitalCase: argv.capitalCase,
