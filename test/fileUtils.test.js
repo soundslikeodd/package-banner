@@ -6,7 +6,7 @@ import {
 describe('load package json', () => {
     it('general', () => {
         testLoadPackageJson(
-            './test/resources/emptyPackagePath.test.txt',
+            '',
             './test/resources/test-package.json',
             false
         );

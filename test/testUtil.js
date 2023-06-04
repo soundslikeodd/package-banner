@@ -55,13 +55,13 @@ const testLoadPackageJson = (
     packagePath,
     fail
 ) => {
-    const expected = readSnapshotFile(consoleSnapshotFile);
     let output = [];
     const stubs = METHODS.map(mth => sinon.stub(console, mth));
     stubs.forEach(stub => stub.callsFake(log => { output = [...output, log]; }));
     const exitStub = sinon.stub(process, 'exit');
     exitStub.callsFake(code => { throw new Error('process.exit: ' + code); });
     if (fail) {
+        const expected = readSnapshotFile(consoleSnapshotFile);
         assert.throws(() => loadPackageJson(packagePath), Error, 'process.exit: 1');
         expect(output.join('\n')).to.equal(expected);
     } else {
