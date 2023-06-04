@@ -1,6 +1,6 @@
 {
     "name": "@soundslikeodd/package-banner",
-    "version": "1.2.0",
+    "version": "1.2.1",
     "description": "NPM package banner generator.",
     "scripts": {
         "prepack": "babel ./src -d commonjs",
