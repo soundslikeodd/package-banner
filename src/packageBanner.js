@@ -1,4 +1,3 @@
-import fs from 'fs';
 import figlet from 'figlet';
 import ansiAlign from 'ansi-align';
 import {
@@ -25,35 +24,23 @@ const toCapitalCase = str => str
 
 const packageBanner = config => {
     const {
-        packagePath, // required
+        packageJson, // required
         debug = false,
+        hideScope = false,
         capitalCase = false,
         breakOnWord = false,
-        hideScope = false,
         packageNameFont = EMPTY_STRING,
         metaDataAlign = ALIGN_RIGHT,
         borderStyle,
         additionalPackageInfo = [],
         figletOptions = {},
     } = config || {};
+    if (!packageJson || typeof packageJson !== 'object') {
+        console.warn(`Package json '${packageJson}' is not a valid type.`);
+        return;
+    }
     if (debug) console.log(JSON.stringify(config, null, 2));
-    if (!packagePath) {
-        console.warn('Package path not set.');
-        return;
-    }
-    if (!fs.existsSync(packagePath)) {
-        console.warn(`Package path '${packagePath}' does not exist.`);
-        return;
-    }
-    const packageString = fs.readFileSync(packagePath);
-    let packageObj;
-    try {
-        packageObj = JSON.parse(packageString);
-    } catch ( error ) {
-        console.warn(`Package path '${packagePath}' does not contain parsable JSON.`);
-        return;
-    }
-    if (debug) console.log(JSON.stringify(packageObj, null, 2));
+    if (debug) console.log(JSON.stringify(packageJson, null, 2));
     const validMetaDateAlignment = !METADATA_ALIGN.includes(metaDataAlign)
         ? (() => {
             console.warn(`Metadata alignment '${metaDataAlign}' is not valid.  Accepted alignments ${METADATA_ALIGN.join(', ')}. Falling back to default 'right'.`);
@@ -64,7 +51,7 @@ const packageBanner = config => {
         name = EMPTY_STRING,
         version = EMPTY_STRING,
         description = EMPTY_STRING,
-    } = packageObj;
+    } = packageJson;
     const metaInfoPrep = (
         value,
         formatter = v => v
@@ -96,7 +83,7 @@ const packageBanner = config => {
                 'version',
             ].includes(i))
                 .reduce(
-                    (acc, key) => [...acc, metaInfoPrep(packageObj[key], v => `${key}: ${v}`)],
+                    (acc, key) => [...acc, metaInfoPrep(packageJson[key], v => `${key}: ${v}`)],
                     []
                 )
                 .filter(i => i !== EMPTY_STRING)),
