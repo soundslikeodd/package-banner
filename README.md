@@ -85,9 +85,11 @@ Some what simple package banner with `capitalCase` and `breakOnWord`
 
 ```javascript
 import { packageBanner } from '@soundslikeodd/package-banner';
+import packageJson from './package.json';
 
 packageBanner(
     {
+        packageJson,
         capitalCase: true,
         breakOnWord: true,
     }
@@ -124,9 +126,11 @@ More complex example package banner with:
 
 ```javascript
 import { packageBanner } from '@soundslikeodd/package-banner';
+import packageJson from './package.json';
 
 packageBanner(
     {
+        packageJson,
         hideScope: true,
         capitalCase: true,
         breakOnWord: true,
@@ -162,9 +166,11 @@ Example of figlet.js overrides
 
 ```javascript
 import { packageBanner } from '@soundslikeodd/package-banner';
+import packageJson from './package.json';
 
 packageBanner(
     {
+        packageJson,
         figletOptions: {
             horizontalLayout: 'full',
             verticalLayout: 'full',
