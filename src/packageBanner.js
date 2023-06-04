@@ -64,6 +64,7 @@ const packageBanner = config => {
         unScopedName,
     ] = name.includes('/') ? name.split('/') : [null, name];
     const bannerText = (capitalCase ? toCapitalCase(unScopedName) : unScopedName);
+    figlet.preloadFonts([packageNameFont || figletOptions?.font || 'Standard']);
     const banner = figlet.textSync(
         breakOnWord ? breakTextOnSpace(bannerText) : bannerText,
         {
@@ -99,14 +100,17 @@ const packageBanner = config => {
     const logestLineLength = Math.max(...insideContent.map(l => l.length));
     const left = borders.L + SPACE;
     const right = SPACE + borders.R;
-    console.log(borders.TL + Array(logestLineLength + 2).fill(borders.T).join(EMPTY_STRING) + borders.TR);
-    console.log(borders.L + Array(logestLineLength + 2).fill(SPACE).join(EMPTY_STRING) + borders.R);
-    inside.split(LINE_BREAK).forEach(line => {
-        const padding = Array(logestLineLength - line.length).fill(SPACE).join(EMPTY_STRING);
-        console.log(left + line + padding + right);
-    });
-    console.log(borders.L + Array(logestLineLength + 2).fill(SPACE).join(EMPTY_STRING) + borders.R);
-    console.log(borders.BL + Array(logestLineLength + 2).fill(borders.B).join(EMPTY_STRING) + borders.BR);
+    const bannerOutput = [
+        borders.TL + Array(logestLineLength + 2).fill(borders.T).join(EMPTY_STRING) + borders.TR,
+        borders.L + Array(logestLineLength + 2).fill(SPACE).join(EMPTY_STRING) + borders.R,
+        ...inside.split(LINE_BREAK).map(line => {
+            const padding = Array(logestLineLength - line.length).fill(SPACE).join(EMPTY_STRING);
+            return left + line + padding + right;
+        }),
+        borders.L + Array(logestLineLength + 2).fill(SPACE).join(EMPTY_STRING) + borders.R,
+        borders.BL + Array(logestLineLength + 2).fill(borders.B).join(EMPTY_STRING) + borders.BR,
+    ];
+    bannerOutput.forEach(l => console.log(l));
 };
 
 export default packageBanner;

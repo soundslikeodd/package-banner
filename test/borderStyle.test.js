@@ -8,7 +8,7 @@ import { stringToBorder } from '../src/borders.js';
 const testPackageJson = readJsonFile('./test/resources/test-package.json');
 
 describe('general border style', () => {
-    it('none named or custom border style', () => {
+    it('non named or custom border style', () => {
         testNodeApi(
             './test/resources/borderStyleNotNamedOrCustomStyle.test.txt',
             {
