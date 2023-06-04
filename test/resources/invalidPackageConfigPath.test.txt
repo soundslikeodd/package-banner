@@ -1,1 +1,0 @@
-Package path './test/resources/broken-package.json' does not contain parsable JSON.

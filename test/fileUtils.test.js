@@ -27,7 +27,7 @@ describe('load package json', () => {
     });
     it('broken package json', () => {
         testLoadPackageJson(
-            './test/resources/invalidPackageConfigPath.test.txt',
+            './test/resources/brokenPackageJson.test.txt',
             './test/resources/broken-package.json',
             true
         );
