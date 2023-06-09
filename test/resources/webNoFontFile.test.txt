@@ -1,0 +1,1 @@
+No figlet font file data present. figletFontFileData is required for web usage.
