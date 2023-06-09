@@ -64,7 +64,6 @@ const packageBanner = config => {
         unScopedName,
     ] = name.includes('/') ? name.split('/') : [null, name];
     const bannerText = (capitalCase ? toCapitalCase(unScopedName) : unScopedName);
-    figlet.preloadFonts([packageNameFont || figletOptions?.font || 'Standard']);
     const banner = figlet.textSync(
         breakOnWord ? breakTextOnSpace(bannerText) : bannerText,
         {
