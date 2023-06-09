@@ -66,7 +66,7 @@ $ npm install @soundslikeodd/package-banner --save-dev
 
 ### Usage
 
-| Argument | Description | Required | Default | options |
+| Argument | Description | Required | Default | Options |
 |-|-|-|-|-|
 | `packageJson` | Object representation of a package.json file to use for information. | :white_check_mark: | | |
 | `debug` | Print debug information, ex. package-banner config, and package.json. | :x: | `false` | |
@@ -85,9 +85,11 @@ Some what simple package banner with `capitalCase` and `breakOnWord`
 
 ```javascript
 import { packageBanner } from '@soundslikeodd/package-banner';
+import packageJson from './package.json';
 
 packageBanner(
     {
+        packageJson,
         capitalCase: true,
         breakOnWord: true,
     }
@@ -110,7 +112,7 @@ Ouput
 |  |____/ \__,_|_| |_|_| |_|\___|_|       |
 |                                         |
 |           NPM package banner generator. |
-|                          version: 1.0.1 |
+|                          version: 1.0.0 |
 |                                         |
 └-----------------------------------------┘
 ```
@@ -124,9 +126,11 @@ More complex example package banner with:
 
 ```javascript
 import { packageBanner } from '@soundslikeodd/package-banner';
+import packageJson from './package.json';
 
 packageBanner(
     {
+        packageJson,
         hideScope: true,
         capitalCase: true,
         breakOnWord: true,
@@ -153,7 +157,7 @@ Output
 | /_____/ \__,_/ /_/ /_//_/ /_/\___//_/             |
 |                                                   |
 | NPM package banner generator.                     |
-| version: 1.0.1                                    |
+| version: 1.0.0                                   |
 |                                                   |
 └---------------------------------------------------┘
 ```
@@ -162,9 +166,11 @@ Example of figlet.js overrides
 
 ```javascript
 import { packageBanner } from '@soundslikeodd/package-banner';
+import packageJson from './package.json';
 
 packageBanner(
     {
+        packageJson,
         figletOptions: {
             horizontalLayout: 'full',
             verticalLayout: 'full',
@@ -185,7 +191,38 @@ Output
 |  | .__/   \__,_|  \___| |_|\_\  \__,_|  \__, |  \___|         |_.__/   \__,_| |_| |_| |_| |_|  \___| |_|    |
 |  |_|                                    |___/                                                               |
 |                                                                               NPM package banner generator. |
-|                                                                                              version: 1.0.1 |
+|                                                                                              version: 1.0.0 |
 |                                                                                                             |
 └-------------------------------------------------------------------------------------------------------------┘
+```
+
+## Web Usage
+
+Figlet requires fonts to be loaded before they can be used in browsers.  To handle the web use case package-banner provides a function for web usage `webPackageBanner`.
+
+context: [figlet.js: Getting Started - Webpack / React](https://github.com/patorjk/figlet.js#getting-started---webpack--react)
+
+### Usage
+
+** The same config arguments as the non-web packageBanner function with the following additions.
+
+| Argument | Description | Required | Default | Options |
+|-|-|-|-|-|
+| `figletFontFileData` | Imported object from figlet _importable-fonts_ | :white_check_mark: | | |
+
+## Example
+
+```bash
+$ npm install @soundslikeodd/package-banner figlet
+```
+
+```javascript
+import { webPackageBanner } from '@soundslikeodd/package-banner';
+import standard from 'figlet/importable-fonts/Standard';
+import packageJson from './package.json';
+
+webPackageBanner({
+  packageJson,
+  figletFontFile: standard,
+});
 ```

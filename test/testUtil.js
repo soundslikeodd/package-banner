@@ -2,6 +2,7 @@ import fs from 'fs';
 import { expect, assert } from 'chai';
 import sinon from 'sinon';
 import packageBanner from '../src/packageBanner.js';
+import webPackageBanner from '../src/webPackageBanner.js';
 import { figletConfigProcessing, loadPackageJson } from '../src/fileUtils.js';
 
 const readJsonFile = file => JSON.parse(fs.readFileSync(file, {encoding:'utf8'}));
@@ -72,8 +73,26 @@ const testLoadPackageJson = (
     METHODS.forEach(mth => console[mth].restore());
 };
 
+const testWebApi = (
+    consoleSnapshotFile,
+    testPackageJson,
+    config
+) => {
+    const banner = readSnapshotFile(consoleSnapshotFile);
+    let output = [];
+    const stubs = METHODS.map(mth => sinon.stub(console, mth));
+    stubs.forEach(stub => stub.callsFake(log => { output = [...output, log]; }));
+    webPackageBanner({
+        packageJson: testPackageJson,
+        ...config
+    });
+    expect(output.join('\n')).to.equal(banner);
+    METHODS.forEach(mth => console[mth].restore());
+};
+
 export {
     testNodeApi,
+    testWebApi,
     testFigletConfigProcessing,
     readJsonFile,
     testLoadPackageJson,
