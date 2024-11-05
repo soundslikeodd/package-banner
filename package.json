@@ -26,7 +26,7 @@
         "package-banner": "./bin/package-banner.js"
     },
     "engines": {
-        "node": ">=14.16"
+        "node": ">=16"
     },
     "author": {
         "name": "soundslikeodd"
